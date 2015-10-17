@@ -1,13 +1,15 @@
 package EpsilonC_fx;
-
+ 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.stage.*;
 
 /**
- *
+ * 
+ * 
  * @author Runnetty
+ * 
  */
 
 public class EpsilonC extends Application {
