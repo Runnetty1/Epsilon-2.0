@@ -45,7 +45,7 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadTreeItems();
-       
+        
     }
     
     public void close() {

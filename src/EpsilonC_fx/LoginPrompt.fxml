@@ -7,11 +7,10 @@
 
 <Pane focusTraversable="true" maxHeight="133.0" maxWidth="240.0" minHeight="133.0" minWidth="240.0" prefHeight="133.0" prefWidth="240.0" scaleShape="false" style="-fx-background-color: #5E5E5E;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EpsilonC_fx.LoginPromptController">
    <children>
-      <Button id="UpdateButton" fx:id="UpdateButton" disable="true" layoutX="170.0" layoutY="81.0" mnemonicParsing="false" style="-fx-background-color: #6E6E6E;" text="Update" />
-      <PasswordField id="passwordField" fx:id="passwordField" layoutX="14.0" layoutY="81.0" prefHeight="25.0" prefWidth="149.0" promptText="Password" />
       <TextField id="usernameField" fx:id="usernameField" layoutX="14.0" layoutY="41.0" promptText="Username" />
+      <PasswordField id="passwordField" fx:id="passwordField" layoutX="14.0" layoutY="81.0" prefHeight="25.0" prefWidth="149.0" promptText="Password" />
+      <Button id="UpdateButton" fx:id="UpdateButton" disable="true" layoutX="170.0" layoutY="81.0" mnemonicParsing="false" style="-fx-background-color: #6E6E6E;" text="Update" />
       <Button id="loginButton" fx:id="loginButton" layoutX="170.0" layoutY="41.0" mnemonicParsing="false" onMouseClicked="#loginAttempt" prefHeight="25.0" prefWidth="55.0" style="-fx-background-color: #8E8E8E;" text="Login" />
-      <Button layoutX="201.0" layoutY="10.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="22.0" style="-fx-background-color: #5E5E5E;" text="X" />
       <Text id="cVersion" fx:id="cVersion" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EpsilonC Version: 1.0.1" wrappingWidth="126.078125" />
    </children>
 </Pane>
