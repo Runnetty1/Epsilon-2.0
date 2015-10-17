@@ -6,8 +6,10 @@ import javafx.scene.*;
 import javafx.stage.*;
 
 /**
- *
+ * 
+ * 
  * @author Runnetty
+ * 
  */
 
 public class EpsilonC extends Application {
