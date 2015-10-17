@@ -18,6 +18,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.web.HTMLEditor;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -34,9 +35,10 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private TreeView<String> locationTreeView;
+    
     @FXML
-    private TextArea textAreaView;
-
+    private HTMLEditor htmleditor;
+    
     private TreeItem<String> root;
 
     private String currentFile = "Sogndal.Kommune", lastSaved = "";
@@ -70,12 +72,13 @@ public class MainWindowController implements Initializable {
                     System.out.println("Selected item is " + treeItem.getValue());
                     //Open the file and show in text area or save
                     //check(treeItem);   
-                    if (!lastSaved.equalsIgnoreCase(textAreaView.getText())) {
+                    String htmlText = htmleditor.getHtmlText();
+                    if (!lastSaved.equalsIgnoreCase(htmlText)) {
                         System.out.println("TEST");
                         int n = JOptionPane.showConfirmDialog(null, "Do you want to save "
                                 + "before you open a new file?", "Save Notification", JOptionPane.YES_NO_OPTION);
                         if (n == JOptionPane.YES_OPTION) {
-                            save(currentFile, textAreaView.getText());
+                            save(currentFile, htmleditor.getHtmlText());
                             //Overwrite current open file
                             currentFile = treeItem.getValue().toString();
                         } else if (n == JOptionPane.NO_OPTION) {
@@ -131,13 +134,12 @@ public class MainWindowController implements Initializable {
         byte[] t = null;
         if (f.exists()) {
             t = dec(f);
-            
-            textAreaView.setText(new String(t));
+            htmleditor.setHtmlText(new String(t));  
         }else{
-            textAreaView.setText("");
+            htmleditor.setHtmlText("");
         }
 
-        lastSaved = textAreaView.getText();
+        lastSaved = htmleditor.getHtmlText();
         currentFile = fileName;
 
     }
