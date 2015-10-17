@@ -12,7 +12,7 @@
 
 <AnchorPane style="-fx-background-color: #5E5E5E;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EpsilonC_fx.MainWindowController">
    <children>
-      <TextArea fx:id="textAreaView" layoutX="171.0" layoutY="25.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="345.0" minWidth="374.0" prefHeight="345.0" prefWidth="374.0" style="-fx-background-color: #5E5E5E;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="25.0" />
+      <TextArea fx:id="textAreaView" layoutX="248.0" layoutY="25.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="345.0" minWidth="297.0" prefHeight="345.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="248.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="25.0" />
       <MenuBar maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="25.0" prefWidth="546.0" style="-fx-background-color: #8E8E8E;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
@@ -28,6 +28,6 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TreeView fx:id="locationTreeView" editable="true" layoutY="25.0" prefHeight="345.0" prefWidth="171.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="25.0" />
+      <TreeView fx:id="locationTreeView" editable="true" layoutY="25.0" maxWidth="1.7976931348623157E308" prefHeight="345.0" prefWidth="245.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="25.0" />
    </children>
 </AnchorPane>
