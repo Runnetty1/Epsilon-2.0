@@ -44,7 +44,8 @@ public class EpsilonC extends Application {
         
         //scene.getStylesheets().add("css.css");
         stage.setScene(scene);
-        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setResizable(false);
         stage.setTitle("Login");
         stage.setScene(scene);
         //stage.getIcons().add(new Image(getClass().getResourceAsStream("myIcon.png")));
