@@ -55,7 +55,7 @@ public class LoginPromptController implements Initializable {
         }else{
             UpdateButton.setDisable(true);
             FileHandler fh = new FileHandler();
-            cVersion.setText(fh.readFile(new File(fh.getDefaultFilePath() 
+            cVersion.setText("EpislonC Version: "+fh.readFile(new File(fh.getDefaultFilePath() 
                     +  fh.sep + "Patch" +fh.sep + "clientVersion.txt")));
         }
         
