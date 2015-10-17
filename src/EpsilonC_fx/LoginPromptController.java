@@ -29,7 +29,7 @@ import javax.swing.JOptionPane;
 public class LoginPromptController implements Initializable {
 
     private String[] names = {"Drift","Moseng"};
-    private String[] pass = {"Beta486","pass"};
+    private String[] pass = {"","pass"};
     private User[] betaUsers = new User[names.length] ;
 
     @FXML
