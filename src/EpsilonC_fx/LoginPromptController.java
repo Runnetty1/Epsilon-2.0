@@ -79,10 +79,6 @@ public class LoginPromptController implements Initializable {
         }
     }
 
-    public void close() {
-        System.exit(0);
-    }
-
     public void startMainWindow(final Stage stage) {
         try {
             // load the scene fxml UI.
