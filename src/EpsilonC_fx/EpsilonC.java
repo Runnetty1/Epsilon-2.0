@@ -42,7 +42,7 @@ public class EpsilonC extends Application {
         Scene scene = new Scene(root);
         scene.setFill(null);
         
-        scene.getStylesheets().add("css.css");
+        //scene.getStylesheets().add("css.css");
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setTitle("Login");

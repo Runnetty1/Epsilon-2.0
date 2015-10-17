@@ -9,9 +9,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="497.0" maxWidth="661.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="546.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EpsilonC_fx.MainWindowController">
+<Pane maxHeight="497.0" maxWidth="661.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="546.0" scaleShape="false" style="-fx-background-color: #5E5E5E;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EpsilonC_fx.MainWindowController">
    <children>
-      <MenuBar blendMode="SRC_ATOP" layoutY="-2.0" prefHeight="25.0" prefWidth="546.0">
+      <MenuBar blendMode="SRC_ATOP" layoutY="-2.0" prefHeight="25.0" prefWidth="546.0" style="-fx-background-color: #8E8E8E;">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -26,7 +26,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TreeView fx:id="locationTreeView" editable="true" layoutY="24.0" prefHeight="345.0" prefWidth="171.0" />
-      <TextArea fx:id="textAreaView" layoutX="171.0" layoutY="24.0" prefHeight="345.0" prefWidth="374.0" />
+      <TreeView fx:id="locationTreeView" editable="true" layoutY="24.0" opacity="0.24" prefHeight="345.0" prefWidth="171.0" style="-fx-background-color: #5E5E5E;" />
+      <TextArea fx:id="textAreaView" layoutX="171.0" layoutY="24.0" prefHeight="345.0" prefWidth="374.0" style="-fx-background-color: #5E5E5E;" />
    </children>
 </Pane>
