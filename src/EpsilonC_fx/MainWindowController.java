@@ -55,6 +55,7 @@ public class MainWindowController implements Initializable {
     }
 
     public void loadTreeItems() {
+        htmleditor = new HTMLEditor();
         XMLReader reader = new XMLReader();
         System.out.println("Loading treeitems");
         try {
@@ -72,8 +73,8 @@ public class MainWindowController implements Initializable {
                     System.out.println("Selected item is " + treeItem.getValue());
                     //Open the file and show in text area or save
                     //check(treeItem);   
-                    String htmlText = htmleditor.getHtmlText();
-                    if (!lastSaved.equalsIgnoreCase(htmlText)) {
+                    
+                    if (!lastSaved.equalsIgnoreCase(htmleditor.getHtmlText())) {
                         System.out.println("TEST");
                         int n = JOptionPane.showConfirmDialog(null, "Do you want to save "
                                 + "before you open a new file?", "Save Notification", JOptionPane.YES_NO_OPTION);
