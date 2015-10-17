@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.embed.swing.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="497.0" maxWidth="661.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="546.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EpsilonC_fx.MainWindowController">
+   <children>
+      <MenuBar blendMode="SRC_ATOP" layoutY="-2.0" prefHeight="25.0" prefWidth="546.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit" />
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TreeView fx:id="locationTreeView" editable="true" layoutY="24.0" prefHeight="345.0" prefWidth="171.0" />
+      <TextArea fx:id="textAreaView" layoutX="171.0" layoutY="24.0" prefHeight="345.0" prefWidth="374.0" />
+   </children>
+</Pane>
