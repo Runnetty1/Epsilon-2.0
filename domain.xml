@@ -1,57 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Sogndal.Kommune>
-	<PaloAlto-2020>
-		<Toppdomene>
-			<Sogndal-DC01/>
-			<Sogndal-DC02/>
-		</Toppdomene>
-		<Link>
-			<SSG-350M::SikkerSone>
-				<Sosial>
-					<Linkserver/>
-					<DBserver/>
-					<Webserver/>
-					<Metaframe/>
-					<Filserver/>
-				</Sosial>
-				<PLO>
-					<unlabeled-server/>
-				</PLO>
-				<Lege>
-					<Legeserver/>
-				</Lege>
-			</SSG-350M::SikkerSone>
-		</Link>
-		<Administrasjonsnett>
-			<VMWARE.ESX1>
-				
-			</VMWARE.ESX1>
-			<SAN-Switch>
-				<VMWARE.ESX2>
-					
-				</VMWARE.ESX2>
-			</SAN-Switch>
-			<BladeSwitch/>
-			<BladeSwitch/>
-			<DB-Server/>
-			<S20A-V-App01/>
-			<S20A-V-Fil01/>
-			<S20A-V-Print01/>
-			<S20A-V-Web01/>
-		</Administrasjonsnett>
-		<Management>
-		</Management>
-		<OppvekstDomene>
-			<S20o-v-Dp/>
-			<Skule-DC02/>
-			<Skule-DC01/>
-		</OppvekstDomene>
-		<Lærar>
-			<Skule-fil/>
-		</Lærar>
-		<Elev>
-			<Skuledrift/>
-			<Skule-elev-fil/>
-		</Elev>
-	</PaloAlto-2020>
-</Sogndal.Kommune>
+<Moseng.Local>
+	<DC-01>
+		<Computers>
+			<PC-Win10/>
+			<PC-Win7/>
+			<PC-Win8/>
+		</Computers>
+		<Sites>
+			<Home>
+				<PC-Studio/>
+				<PC-Media/>
+				<SiteServer-01/>
+			</Home>
+		</Sites>
+		<Websites>
+			<www.audunmoseng.net/>
+			<www.domain.com/>
+			<www.computerforums.com/>
+			<www.weebly.com/>
+		</Websites>
+		<Software>
+			<Netbeans/>
+			<Sublime/>
+			<Steam/>
+			<Spotify/>
+			<Skype/>
+			<PaleMoon/>
+		</Software>
+	</DC-01>
+</Moseng.Local>
