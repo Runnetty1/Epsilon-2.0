@@ -41,6 +41,7 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //First Selected File
+        htmlEditor = new HTMLEditor();
         currentFile = "Moseng.Local";
         lastOpenedText = "<html dir=\"ltr\"><head></head><body contenteditable=\"true\"></body></html>";
         loadTreeItems();
@@ -179,7 +180,7 @@ public class MainWindowController implements Initializable {
             htmlEditor.setHtmlText(new String(t));
             lastOpenedText = new String(t);
         } else {
-            htmlEditor.setHtmlText(new HTMLEditor().getHtmlText());
+            htmlEditor = new HTMLEditor();
             lastOpenedText = htmlEditor.getHtmlText();
         }
 
