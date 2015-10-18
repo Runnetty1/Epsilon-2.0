@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package EpsilonC_fx;
 
 import java.io.File;
@@ -35,37 +30,37 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private TreeView<String> locationTreeView;
-    
+
     @FXML
-    private HTMLEditor htmleditor;
-    
+    private HTMLEditor htmlEditor;
+
     private TreeItem<String> root;
 
-    private String currentFile = "Sogndal.Kommune", lastSaved = "";
-    
+    private String currentFile, lastOpened;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //First Selected File
+        currentFile = "Moseng.Local";
+        lastOpened = "<html dir=\"ltr\"><head></head><body contenteditable=\"true\"></body></html>";
         loadTreeItems();
-        
     }
-    
+
     public void close() {
         System.exit(0);
     }
 
     public void loadTreeItems() {
-        htmleditor = new HTMLEditor();
+
         XMLReader reader = new XMLReader();
         System.out.println("Loading treeitems");
         try {
             root = nodesfromXMLDoc(reader.getXMLDoc().getDocumentElement());
             root.setExpanded(true);
-           
+
             locationTreeView.setRoot(root);
             locationTreeView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
             locationTreeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-
                 @Override
                 public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 
@@ -73,21 +68,21 @@ public class MainWindowController implements Initializable {
                     System.out.println("Selected item is " + treeItem.getValue());
                     //Open the file and show in text area or save
                     //check(treeItem);   
-                    
-                    if (!lastSaved.equalsIgnoreCase(htmleditor.getHtmlText())) {
-                        System.out.println("TEST");
+                    //System.out.println("Last Opened has text:" + lastOpened + ":");
+                    //System.out.println("htmleditor has text:" + htmlEditor.getHtmlText() + ":");
+
+                    if (!htmlEditor.getHtmlText().equalsIgnoreCase(getTextFromFile(currentFile))) {
                         int n = JOptionPane.showConfirmDialog(null, "Do you want to save "
                                 + "before you open a new file?", "Save Notification", JOptionPane.YES_NO_OPTION);
                         if (n == JOptionPane.YES_OPTION) {
-                            save(currentFile, htmleditor.getHtmlText());
+                            save(currentFile, htmlEditor.getHtmlText());
                             //Overwrite current open file
                             currentFile = treeItem.getValue().toString();
                         } else if (n == JOptionPane.NO_OPTION) {
                         }
-
                         load(treeItem.getValue().toString());
-
-                    } else {
+                    } else {//load new item
+                        System.out.println("File Exist");
                         load(treeItem.getValue().toString());
                     }
                 }
@@ -129,20 +124,32 @@ public class MainWindowController implements Initializable {
 
     public void load(String fileName) {
         FileHandler fh = new FileHandler();
-
- 
         File f = new File(fh.getDefaultFilePath() + fh.sep + "NodeInfo" + fh.sep + fileName + ".bin");
         byte[] t = null;
         if (f.exists()) {
             t = dec(f);
-            htmleditor.setHtmlText(new String(t));  
-        }else{
-            htmleditor.setHtmlText("");
+            htmlEditor.setHtmlText(new String(t));
+            lastOpened = htmlEditor.getHtmlText();
+        } else {
+            htmlEditor.setHtmlText(new HTMLEditor().getHtmlText());
+            lastOpened = htmlEditor.getHtmlText();
         }
 
-        lastSaved = htmleditor.getHtmlText();
+        //lastOpened = "<html dir=\"ltr\"><head></head><body contenteditable=\"true\"></body></html>";
         currentFile = fileName;
 
+    }
+
+    public String getTextFromFile(String fileName) {
+        FileHandler fh = new FileHandler();
+        File f = new File(fh.getDefaultFilePath() + fh.sep + "NodeInfo" + fh.sep + fileName + ".bin");
+        byte[] t = null;
+        String s = "n";
+        if (f.exists()) {
+            t = dec(f);
+            s = new String(t);
+        }
+        return s;
     }
 
     private byte[] dec(File f) {
