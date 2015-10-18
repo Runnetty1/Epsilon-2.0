@@ -36,13 +36,13 @@ public class MainWindowController implements Initializable {
 
     private TreeItem<String> root;
 
-    private String currentFile, lastOpened;
+    private String currentFile, lastOpenedText;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //First Selected File
         currentFile = "Moseng.Local";
-        lastOpened = "<html dir=\"ltr\"><head></head><body contenteditable=\"true\"></body></html>";
+        lastOpenedText = "<html dir=\"ltr\"><head></head><body contenteditable=\"true\"></body></html>";
         loadTreeItems();
     }
 
@@ -54,10 +54,11 @@ public class MainWindowController implements Initializable {
 
         XMLReader reader = new XMLReader();
         System.out.println("Loading treeitems");
+        
         try {
             root = nodesfromXMLDoc(reader.getXMLDoc().getDocumentElement());
             root.setExpanded(true);
-
+            
             locationTreeView.setRoot(root);
             locationTreeView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
             locationTreeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
@@ -68,10 +69,28 @@ public class MainWindowController implements Initializable {
                     System.out.println("Selected item is " + treeItem.getValue());
                     //Open the file and show in text area or save
                     //check(treeItem);   
-                    //System.out.println("Last Opened has text:" + lastOpened + ":");
-                    //System.out.println("htmleditor has text:" + htmlEditor.getHtmlText() + ":");
-
-                    if (!htmlEditor.getHtmlText().equalsIgnoreCase(getTextFromFile(currentFile))) {
+                    System.out.println("Last Opened has text:" + lastOpenedText + ":");
+                    System.out.println("htmleditor has text:" + htmlEditor.getHtmlText() + ":");
+                    
+                    if(getTextFromFile(currentFile).equalsIgnoreCase(htmlEditor.getHtmlText())){
+                        System.out.println("FILE og editor er like");
+                        //NO SAVEPROMT
+                        // LOAD new file
+                        load(treeItem.getValue().toString());
+                    }else if (getTextFromFile(currentFile).equalsIgnoreCase("n")){
+                        System.err.println("NO FILE");
+                        int n = JOptionPane.showConfirmDialog(null, "This file does not exits!"
+                                + "Do you wish to create a file for this node?", "Save Notification", JOptionPane.YES_NO_OPTION);
+                        if (n == JOptionPane.YES_OPTION) {
+                            save(currentFile, htmlEditor.getHtmlText());
+                            //Overwrite current open file
+                            currentFile = treeItem.getValue().toString();
+                            
+                        } else if (n == JOptionPane.NO_OPTION) {
+                        }
+                        load(treeItem.getValue().toString());
+                    }else{
+                        //IKKE LIKE
                         int n = JOptionPane.showConfirmDialog(null, "Do you want to save "
                                 + "before you open a new file?", "Save Notification", JOptionPane.YES_NO_OPTION);
                         if (n == JOptionPane.YES_OPTION) {
@@ -81,10 +100,33 @@ public class MainWindowController implements Initializable {
                         } else if (n == JOptionPane.NO_OPTION) {
                         }
                         load(treeItem.getValue().toString());
-                    } else {//load new item
-                        System.out.println("File Exist");
-                        load(treeItem.getValue().toString());
                     }
+                    
+                    
+                    
+//                    if (htmlEditor.getHtmlText().equalsIgnoreCase(lastOpened)) {
+//                        System.out.println("DE ER LIKE");
+//                        // IKKE ÅPNE SAVEPROMT
+//                        load(treeItem.getValue().toString());
+////                        
+//                    }else if(!htmlEditor.getHtmlText().equalsIgnoreCase(lastOpened)){
+//                        System.out.println("IKKE LIKE");
+//                        // SAVE PROMT
+//                        int n = JOptionPane.showConfirmDialog(null, "Do you want to save "
+//                                + "before you open a new file?", "Save Notification", JOptionPane.YES_NO_OPTION);
+//                        if (n == JOptionPane.YES_OPTION) {
+//                            save(currentFile, htmlEditor.getHtmlText());
+//                            //Overwrite current open file
+//                            currentFile = treeItem.getValue().toString();
+//                        } else if (n == JOptionPane.NO_OPTION) {
+//                        }
+//                        load(treeItem.getValue().toString());
+//                    } else {
+//                        
+//                        System.out.println("INGEN AV DELENE");
+//                        //load(treeItem.getValue().toString());
+//                    }
+                    
                 }
             });
         } catch (Exception exc) {
@@ -107,6 +149,12 @@ public class MainWindowController implements Initializable {
             Node currentNode = nodeList.item(i);
             if (currentNode.getNodeType() == Node.ELEMENT_NODE) {
                 //calls this method for all the children which is Element
+                //Force create node file
+                FileHandler fh = new FileHandler();
+                File f = new File(fh.getDefaultFilePath() + fh.sep + "NodeInfo" + fh.sep + currentNode.getNodeName() + ".bin");
+                if (!f.exists()) {
+                    save(currentNode.getNodeName(),"");
+                }
                 a.getChildren().add(nodesfromXMLDoc(currentNode));
             }
         }
@@ -129,10 +177,10 @@ public class MainWindowController implements Initializable {
         if (f.exists()) {
             t = dec(f);
             htmlEditor.setHtmlText(new String(t));
-            lastOpened = htmlEditor.getHtmlText();
+            lastOpenedText = new String(t);
         } else {
             htmlEditor.setHtmlText(new HTMLEditor().getHtmlText());
-            lastOpened = htmlEditor.getHtmlText();
+            lastOpenedText = htmlEditor.getHtmlText();
         }
 
         //lastOpened = "<html dir=\"ltr\"><head></head><body contenteditable=\"true\"></body></html>";
